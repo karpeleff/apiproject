@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+//use App\Http\Controllers\Api\v1\DocumentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +18,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:Api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::Resource('/document','Api\v1\DocumentController');
