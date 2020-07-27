@@ -88,4 +88,12 @@ class DocumentController extends Controller
         $data->delete();
         return response()->json(null,204);
     }
+
+    public function  Publish($id)
+    {
+       //echo $id;
+        $data = Document::find($id);
+        $data->status = 'published';
+        $data->save();
+    }
 }
