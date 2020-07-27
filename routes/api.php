@@ -19,4 +19,4 @@ Route::middleware('auth:Api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::Resource('/document','Api\v1\DocumentController');
+Route::Resource('/v1/document','Api\v1\DocumentController');
