@@ -21,4 +21,4 @@ Route::middleware('auth:Api')->get('/user', function (Request $request) {
 
 Route::Resource('/v1/document','Api\v1\DocumentController');
 
-Route::get('/v1/document/{id}/publish','Api\v1\DocumentController@Publish');
+Route::post('/v1/document/{id}/publish','Api\v1\DocumentController@Publish');

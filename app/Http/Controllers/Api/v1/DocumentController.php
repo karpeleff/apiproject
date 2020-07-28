@@ -74,8 +74,14 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {
         $data = Document::find($id);
-        $data->update($request->all());
-        return response()->json($data,200);
+        if($data->status == 'published'){
+            return response()->json(null,400);
+        }
+        else{
+            $data->update($request->all());
+            return response()->json($data,200);
+        }
+
     }
 
     /**
@@ -102,6 +108,7 @@ class DocumentController extends Controller
           // $data = Document::find($id);
            $data->status = 'published';
            $data->save();
+           return response()->json(null,200);
        }
 
     }
