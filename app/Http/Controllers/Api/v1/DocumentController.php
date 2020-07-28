@@ -36,8 +36,10 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-       $data = Document::create($request->all());
-       return response()->json($data,201);
+        dd($request->status);
+
+      // $data = Document::create($request->all());
+       //return response()->json($data,201);
     }
 
     /**
@@ -48,7 +50,7 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Document::find($id),200);
+        return response()->json(Document::findOrFail($id),200);
     }
 
     /**
@@ -93,7 +95,14 @@ class DocumentController extends Controller
     {
        //echo $id;
         $data = Document::find($id);
-        $data->status = 'published';
-        $data->save();
+        if($data->status == 'published'){
+            return response()->json(null,400);
+        }
+       else{
+          // $data = Document::find($id);
+           $data->status = 'published';
+           $data->save();
+       }
+
     }
 }
